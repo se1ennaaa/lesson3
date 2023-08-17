@@ -1,4 +1,4 @@
-package com.example.lesson3.presentation.viewModel
+package com.example.lesson3.ui.playlist.viewModel
 
 import androidx.lifecycle.LiveData
 import com.example.lesson3.App
@@ -10,4 +10,5 @@ class MainViewModel: BaseViewModel(){
     fun getPlaylist():LiveData<PlayList>{
         return App.repository.getPlaylist()
     }
+
 }

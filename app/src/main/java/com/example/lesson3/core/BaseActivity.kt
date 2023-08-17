@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
 
-abstract class BaseActivity<VB : ViewBinding, VM: BaseViewModel>: AppCompatActivity() {
+abstract class  BaseActivity<VB : ViewBinding, VM: BaseViewModel>: AppCompatActivity() {
     protected lateinit var binding: VB
     protected abstract fun inflateViewBinding(): VB
     protected abstract val viewModel: VM

@@ -8,4 +8,6 @@ class App:Application() {
     companion object{
         val repository = Repository()
     }
+
+
 }

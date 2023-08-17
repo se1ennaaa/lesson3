@@ -1,4 +1,4 @@
-package com.example.lesson3.presentation.adapter
+package com.example.lesson3.ui.adapter
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -9,9 +9,9 @@ import coil.load
 import com.example.lesson3.data.PlayList
 import com.example.lesson3.databinding.ItemPlaylistBinding
 
-class PlayListAdapter : Adapter<PlayListAdapter.PlayListViewHolder>() {
+class PlayListAdapter(val onClick:(PlayList.Item)->Unit) : Adapter<PlayListAdapter.PlayListViewHolder>() {
 
-    var list = mutableListOf<PlayList.Item>()
+    private var list = mutableListOf<PlayList.Item>()
 
     @SuppressLint("NotifyDataSetChanged")
     fun addData(lists: List<PlayList.Item>) {
@@ -47,6 +47,9 @@ class PlayListAdapter : Adapter<PlayListAdapter.PlayListViewHolder>() {
             binding.ivPlaylistImage.load(item.snippet.thumbnails.default.url)
             binding.namePlaylist.text = item.snippet.title
             binding.tvAmountVideo.text = item.contentDetails.itemCount.toString() + " video series"
+            itemView.setOnClickListener {
+                onClick(item)
+            }
         }
     }
 }
