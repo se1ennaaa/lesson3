@@ -49,6 +49,11 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

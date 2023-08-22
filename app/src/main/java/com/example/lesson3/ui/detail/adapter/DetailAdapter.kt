@@ -8,7 +8,7 @@ import com.example.lesson3.data.PlaylistItem
 import com.example.lesson3.databinding.ItemDetailBinding
 import com.example.lesson3.loadImage
 
-class DetailAdapter (private val onClick: (PlaylistItem.Item) -> Unit) :
+class DetailAdapter(private val onClick: (PlaylistItem.Item) -> Unit) :
     RecyclerView.Adapter<DetailAdapter.DetailViewHolder>() {
 
     private var list = mutableListOf<PlaylistItem.Item>()
@@ -40,9 +40,7 @@ class DetailAdapter (private val onClick: (PlaylistItem.Item) -> Unit) :
             binding.tvTime.text = item.kind ?: "Пусто"
             binding.tvVideoName.text = item.snippet.title ?: "Пусто"
             binding.ivVideo.loadImage(item.snippet.thumbnails.standard.url!!) ?: "Пусто"
-            itemView.setOnClickListener {
-                onClick(item)
-            }
+            itemView.setOnClickListener { onClick(item) }
         }
     }
 }
