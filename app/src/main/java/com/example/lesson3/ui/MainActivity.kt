@@ -3,6 +3,7 @@ package com.example.lesson3.ui
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import com.example.lesson3.ConnectionLiveData
 import com.example.lesson3.core.BaseActivity
@@ -34,22 +35,21 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(){
             adapter.addData(playlist.items)
         }
     }
-
     override fun checkIntrnet() {
         super.checkIntrnet()
-            ConnectionLiveData(application).observe(this) {
-                if (it) {
-                    binding.internetConnection.visibility = View.VISIBLE
-                    binding.noConnection.visibility = View.GONE
-                } else {
-                    binding.btnTryAgain.setOnClickListener {
-                        binding.internetConnection.visibility = View.GONE
-                        binding.noConnection.visibility = View.VISIBLE
-                    }
-                    setListener()
+        ConnectionLiveData(application).observe(this) {
+            if (it) {
+                binding.btnTryAgain.setOnClickListener {
+                    binding.noConnection.isVisible = false
+                    binding.internetConnection.isVisible = true
                 }
+            } else {
+                binding.noConnection.isVisible = true
+                binding.internetConnection.isVisible = false
             }
         }
+
+    }
 
     companion object{
         const val KEY_API = "OLOLOL"
